@@ -67,7 +67,7 @@ All API requests should be sent to `http://localhost:8005`.
 }
 ```
 
-### Logout
+### Logout (Token Revoke Functionality)
 
 **Endpoint:** `POST /auth/logout`
 
