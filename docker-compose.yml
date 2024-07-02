@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  advaitassignment:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_APPLICATION_NAME: advaitassignment
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/task?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_OPEN_IN_VIEW: false
+      SPRING_JPA_SHOW_SQL: true
+      SECURITY_JWT_SECRET_KEY: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
+      SECURITY_JWT_EXPIRATION_TIME: 3600000
+      LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_DATA: DEBUG
+      LOGGING_LEVEL_ORG_HIBERNATE_SQL: DEBUG
+    ports:
+      - "8005:8005"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.4.0
+    environment:
+      MYSQL_DATABASE: task
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root123
+      MYSQL_ROOT_PASSWORD: root123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
