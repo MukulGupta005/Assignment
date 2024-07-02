@@ -2,6 +2,7 @@
 ---
 
 # AdvaitAssignment API Documentation
+Demo: https://youtu.be/mWvqt6PcDLk
 
 This document outlines the API endpoints for user authentication and management within the AdvaitAssignment project. The API is built using Spring Boot and leverages Spring Security for authentication and authorization.
 
